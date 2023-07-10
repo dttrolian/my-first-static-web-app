@@ -42,6 +42,7 @@ class App extends Component {
                     } </p> : null}  {
                         users.map(user => {
                             const {
+                                id,
                                 message
                             } = user;
                             return (
