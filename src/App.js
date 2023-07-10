@@ -7,8 +7,7 @@ class App extends Component {
         };
         getFetchUsers() {
             const headers = new Headers();
-            const subkey = ``;
-        
+                   
             headers.append("Ocp-Apim-Subscription-Key", "0e54b86ad6ed420796b0a44222c3b2c2");
         
             const options = {
@@ -34,7 +33,7 @@ class App extends Component {
             } = this.state;
             return (
               <React.Fragment>
-              <h1>All User</h1>
+              <h1>Message</h1>
               {
                     error ? <p>
               {
