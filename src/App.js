@@ -1,16 +1,50 @@
-import React, { useState, useEffect } from 'react';
-
-function App() {
-  const [data, setData] = useState('');
-
-  useEffect(() => {
-    (async function () {
-      const { text } = await( await fetch(`/api/message`)).json();
-      setData(text);
-    })();
-  });
-
-  return <div>{data.message}</div>;
-}
-
+import React, {
+    Component
+} from 'react';
+class App extends React.Component {
+        state = {
+            isLoading: true,
+            users: [],
+            error: null
+        };
+        getFetchUsers() {
+            this.setState({
+                loading: true
+            }, () => {
+                fetch("/api/message").then(res => res.json()).then(result => this.setState({
+                    loading: false,
+                    users: result
+                })).catch(console.log);
+            });
+        }
+        componentDidMount() {
+            this.getFetchUsers();
+        }
+        render() {
+            const {
+                users,
+                error
+            } = this.state;
+            return (
+              <React.Fragment>
+              <h1>All User</h1>
+              {
+                    error ? <p>
+              {
+                        error.message
+                    } </p> : null}  {
+                        users.map(user => {
+                            const {
+                                message
+                            } = user;
+                            return (
+                            <div key={message}>
+                                <p>Message: {message}</p>
+                                <hr />
+                            </div>
+                            );
+                        })
+                    } </React.Fragment> );
+            }
+        }
 export default App;
