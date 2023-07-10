@@ -6,10 +6,19 @@ class App extends Component {
             error: null
         };
         getFetchUsers() {
+            const headers = new Headers();
+            const subkey = ``;
+        
+            headers.append("Ocp-Apim-Subscription-Key", "0e54b86ad6ed420796b0a44222c3b2c2");
+        
+            const options = {
+                method: "GET",
+                headers: headers
+            };
             this.setState({
                 loading: true
             }, () => {
-                fetch("/api/message").then(res => res.json()).then(result => this.setState({
+                fetch("/api/message",options).then(res => res.json()).then(result => this.setState({
                     loading: false,
                     users: result
                 })).catch(console.log);
