@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-class App extends React.Component {
+import React, {  Component } from 'react';
+class App extends Component {
         state = {
             isLoading: true,
             users: [],
