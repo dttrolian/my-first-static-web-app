@@ -36,7 +36,7 @@ class App extends Component {
                                 message
                             } = user;
                             return (
-                            <div key={message}>
+                            <div key={id}>
                                 <p>Message: {message}</p>
                                 <hr />
                             </div>
